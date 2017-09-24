@@ -1,0 +1,6 @@
+﻿$playlist = ((Invoke-Webrequest "لینک-لیست-پخش").links | Where {$_.class -match "playlist-video"}).href
+ForEach ($Video in $Playlist){
+$s ="https://www.youtube.com" + $Video
+$s =$s.Substring(0, $s.IndexOf('&'))
+    Write-Output ($s)
+}
